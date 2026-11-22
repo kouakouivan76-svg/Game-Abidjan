@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Abidjan City 3D — KJ Industries</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div id="hud">
+  <div class="bar"><div id="hp"></div></div>
+  <div class="bar" id="abar"><div id="armor"></div></div>
+  <div class="row"><span id="cash">$0</span><span id="clock">12:00</span></div>
+  <div class="row"><span id="wname">Poings</span><span id="ammo"></span></div>
+  <div class="row small"><span id="diff"></span><span id="speed"></span></div>
+</div>
+<div id="rightcol">
+  <canvas id="map" width="130" height="130"></canvas>
+  <div id="gps"></div>
+  <div id="stars">☆☆☆☆☆</div>
+</div>
+<div id="mission"><b id="mtitle"></b><span id="mtext"></span><small id="mdist"></small></div>
+<div id="bossbar"><span id="bossname"></span><div class="bar"><div id="bosshp"></div></div></div>
+<div id="cross">+</div>
+<div id="zone"></div>
+<div id="feed"></div>
+<div id="hurt"></div>
+<div id="subs"></div>
+<div id="banner"><div id="bt"></div><div id="bs"></div></div>
+<div id="prompt"></div>
+<div id="shop"><div class="card"><div class="sh"><b id="shTitle"></b><span id="shCash"></span><button id="shClose">✕</button></div><div id="shSub"></div><div id="shBody"></div></div></div>
+<div id="fade"></div>
+<div id="bars"><div class="lb t"></div><div class="lb b"></div><div id="skiphint">Entrée / toucher : passer</div></div>
+<div id="bigmap"><div id="bmwrap"><canvas id="bmc"></canvas><div id="bmbar"><button id="bmIn" title="Zoom +">＋</button><button id="bmOut" title="Zoom −">－</button><button id="bmMe" title="Me centrer">⌖</button><button id="bmClose" title="Fermer">✕</button></div></div><div id="bmInfo"><b>Carte d'Abidjan</b><small>Touche un lieu pour le détail, glisse pour te déplacer, molette / pincement pour zoomer.</small></div><div id="bmlegend">M ou Échap : fermer</div></div>
+
+<div id="touch">
+  <div id="stick"><div id="knob"></div></div>
+  <div id="btns">
+    <button class="btn bf" data-k="fire">FEU</button>
+    <button class="btn bw" data-k="weapon">ARME</button>
+    <button class="btn be" data-k="enter">🚗</button>
+    <button class="btn bs" data-k="sprint" id="bsprint">COURIR</button>
+    <button class="btn br" data-k="reload" id="breload">R</button>
+  </div>
+  <button class="btn bp" data-k="pause">❚❚</button>
+  <button class="btn bm" data-k="map">🗺</button>
+</div>
+
+<div id="pause" class="overlay hide">
+  <div class="card small">
+    <h2>PAUSE</h2>
+    <button id="pResume">Reprendre</button>
+    <button id="pMissions">Journal des missions</button>
+    <button id="pRetry">Recommencer la mission</button>
+    <div class="opt"><label>Graphismes <select id="oQuality"><option value="auto">Auto</option><option value="high">Élevé</option><option value="medium">Moyen</option><option value="low">Économique</option></select></label></div>
+    <div class="opt"><label>Volume <input type="range" id="oVol" min="0" max="1" step=".05" value=".7"></label></div>
+    <div class="opt"><label><input type="checkbox" id="oMusic" checked> Musique de radio (Q en voiture)</label></div>
+    <button id="pCodes">Codes &amp; boosts</button>
+    <button id="pSave">Sauvegarder</button>
+    <button id="pQuit">Quitter vers le menu</button>
+  </div>
+</div>
+<div id="log" class="overlay hide"><div class="card"><h2>JOURNAL DES MISSIONS</h2><div id="logList"></div><button id="logClose">Fermer</button></div></div>
+
+<div id="codes" class="overlay hide"><div class="card"><h2>CODES &amp; BOOSTS</h2>
+  <div id="codeOut"></div>
+  <form id="codeForm"><input id="codeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="ex : conduire char · pnj soldats 6 · tout · finir"><button type="submit">OK</button></form>
+  <p class="keys">Tape <b>aide</b> pour la liste. Raccourcis : spawn jet, tp tour, heure nuit, recherche 0, finir…</p>
+  <button id="codeClose">Fermer</button></div></div>
+
+<div id="start" class="overlay">
+  <div class="card">
+    <h1>ABIDJAN CITY</h1>
+    <p class="sub">KJ Industries · version 3D</p>
+    <div id="heroes"></div>
+    <div id="menu">
+      <button id="bStory">Nouvelle histoire</button>
+      <button id="bContinue" class="hide">Continuer</button>
+      <button id="bFree">Mode libre</button>
+      <button id="bMulti">Multijoueur</button>
+    </div>
+    <div id="multi" class="hide">
+      <input id="mName" placeholder="Ton pseudo" maxlength="14">
+      <input id="mUrl" placeholder="Serveur ws://localhost:8080">
+      <input id="mRoom" placeholder="Salle (ex : yop)" maxlength="12">
+      <button id="bJoin">Rejoindre</button> <button id="bBack">Retour</button>
+      <p id="mStatus" class="keys"></p>
+    </div>
+    <p class="keys">ZQSD : bouger · Maj : courir · clic / Espace : tirer · E : monter/descendre · R : recharger · 1-6 : armes<br>Avions/hélico : Espace = monter / accélérer, Maj = descendre / ralentir · Q : radio · M : carte · Échap : pause</p>
+  </div>
+</div>
+<script src="assets.js"></script>
+<script src="jeu.js"></script>
+</body>
+</html>

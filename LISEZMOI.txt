@@ -1,0 +1,3 @@
+ABIDJAN CITY 3D — KJ Industries
+Ouvre index.html dans Chrome (garde index.html, style.css et jeu.js dans le meme dossier).
+Le code source lisible est dans le dossier src/ (game.js).
