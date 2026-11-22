@@ -57,13 +57,14 @@
     <div class="opt"><label>Graphismes <select id="oQuality"><option value="auto">Auto</option><option value="high">Élevé</option><option value="medium">Moyen</option><option value="low">Économique</option></select></label></div>
     <div class="opt"><label>Volume <input type="range" id="oVol" min="0" max="1" step=".05" value=".7"></label></div>
     <div class="opt"><label><input type="checkbox" id="oMusic" checked> Musique de radio (Q en voiture)</label></div>
-    
+    <button id="pCodes">Codes &amp; boosts</button>
     <button id="pSave">Sauvegarder</button>
     <button id="pQuit">Quitter vers le menu</button>
   </div>
 </div>
 <div id="log" class="overlay hide"><div class="card"><h2>JOURNAL DES MISSIONS</h2><div id="logList"></div><button id="logClose">Fermer</button></div></div>
 
+<div id="codes" class="overlay hide"><div class="card"><h2>CODES &amp; BOOSTS</h2>
   <div id="codeOut"></div>
   <form id="codeForm"><input id="codeIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="ex : conduire char · pnj soldats 6 · tout · finir"><button type="submit">OK</button></form>
   <p class="keys">Tape <b>aide</b> pour la liste. Raccourcis : spawn jet, tp tour, heure nuit, recherche 0, finir…</p>
@@ -78,7 +79,7 @@
       <button id="bStory">Nouvelle histoire</button>
       <button id="bContinue" class="hide">Continuer</button>
       <button id="bFree">Mode libre</button>
-      
+      <button id="bMulti">Multijoueur</button>
     </div>
     <div id="multi" class="hide">
       <input id="mName" placeholder="Ton pseudo" maxlength="14">
